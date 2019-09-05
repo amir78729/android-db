@@ -90,7 +90,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(Util.KEY_NAME, disease.getName());
         values.put(Util.KEY_DESCRIPTION, disease.getDescriptiom());
-        return db.update(Util.TABLE_NAME, values, Util.KEY_ID, new String[]{String.valueOf(disease.getId())});
+        return db.update(Util.TABLE_NAME, values, Util.KEY_ID + "=?", new String[]{String.valueOf(disease.getId())});
 
+    }
+
+    public void deleteDisease(Disease disease){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(Util.TABLE_NAME, Util.KEY_ID + "=?" , new String[]{String.valueOf(disease.getId())});
+        db.close();
+    }
+
+    public void deleteDisease(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(Util.TABLE_NAME, Util.KEY_ID + "=?" , new String[]{String.valueOf(id)});
+        db.close();
+    }
+
+    public int getCount(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String COUNT_QUERY = "SELECT * FROM " + Util.TABLE_NAME;
+        Cursor cursor = db.rawQuery(COUNT_QUERY, null);
+        return cursor.getCount();
     }
 }
