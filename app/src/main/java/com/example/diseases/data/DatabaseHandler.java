@@ -2,6 +2,7 @@ package com.example.diseases.data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -41,5 +42,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(Util.KEY_DESCRIPTION, disease.getDescriptiom());
         db.insert(Util.TABLE_NAME, null, values);
         db.close();
+    }
+
+    public Disease getDisease(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(Util.TABLE_NAME,
+                new String[]{Util.KEY_ID, Util.KEY_NAME, Util.KEY_DESCRIPTION},
+                Util.KEY_ID + "=?",
+                new String[]{String.valueOf(id)},
+                null,
+                null,
+                null);
+        Disease disease = new Disease();
+        disease.setId(Integer.parseInt(cursor.getString(0)));
+        disease.setName(cursor.getString(1));
+        disease.setDescriptiom(cursor.getString(2));
+        cursor.close();//?
+        return disease;
     }
 }

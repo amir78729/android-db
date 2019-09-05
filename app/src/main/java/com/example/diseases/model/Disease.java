@@ -1,6 +1,7 @@
 package com.example.diseases.model;
 
 public class Disease {
+    private  int id;
     private String name;
     private String descriptiom;
 
@@ -27,5 +28,13 @@ public class Disease {
 
     public void setDescriptiom(String descriptiom) {
         this.descriptiom = descriptiom;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 }
