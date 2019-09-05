@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.diseases.R;
 import com.example.diseases.model.Disease;
@@ -45,6 +46,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(Util.KEY_DESCRIPTION, disease.getDescriptiom());
         db.insert(Util.TABLE_NAME, null, values);
         db.close();
+        Log.d("DB", "addDiseases: disease added!");
     }
 
     public Disease getDisease(int id){
@@ -81,5 +83,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 }while (cursor.moveToNext());
         }
         return allDiseases;
+    }
+
+    public int updateDisease(Disease disease){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(Util.KEY_NAME, disease.getName());
+        values.put(Util.KEY_DESCRIPTION, disease.getDescriptiom());
+        return db.update(Util.TABLE_NAME, values, Util.KEY_ID, new String[]{String.valueOf(disease.getId())});
+
     }
 }
