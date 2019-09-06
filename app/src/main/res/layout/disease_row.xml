@@ -12,7 +12,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/disease_name"
+                android:id="@+id/disease_name_for_row"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="disease name" />
