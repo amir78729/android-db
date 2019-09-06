@@ -14,6 +14,12 @@ public class DiseaseInformation extends AppCompatActivity {
         setContentView(R.layout.activity_disease_information);
         name = findViewById(R.id.name);
         description = findViewById(R.id.description);
-
+        Bundle bundle = getIntent().getExtras();
+        if (bundle!=null){
+            String diseaseName = bundle.getString("name");
+            name.setText(diseaseName);
+            String diseaseDescrition = bundle.getString("description");
+            description.setText(diseaseDescrition);
+        }
     }
 }

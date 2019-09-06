@@ -1,6 +1,7 @@
 package com.example.diseases.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.diseases.DiseaseInformation;
+import com.example.diseases.MainActivity;
 import com.example.diseases.R;
 import com.example.diseases.model.Disease;
 
@@ -45,11 +48,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return diseaseList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView deseaseName;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             deseaseName = itemView.findViewById(R.id.disease_name_for_row);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition();
+            Disease disease = diseaseList.get(position);
+            Intent intent = new Intent(context , DiseaseInformation.class);
+            intent.putExtra("name", disease.getName());
+            intent.putExtra("description", disease.getDescriptiom());
+            context.startActivity(intent);
         }
     }
 }

@@ -19,7 +19,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFEB3B">
+            android:background="#FFFFFF">
 
             <TextView
                 android:id="@+id/disease_name_for_row"
@@ -29,7 +29,26 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="14dp"
                 android:layout_marginBottom="13dp"
-                android:text="disease name" />
+                android:text="disease name"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="1dp"
+                android:background="#00FFFFFF"
+                app:srcCompat="@android:drawable/ic_menu_edit" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="3dp"
+                android:layout_toStartOf="@+id/imageButton"
+                android:background="#00FFFFFF"
+                app:srcCompat="@android:drawable/ic_menu_delete" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
