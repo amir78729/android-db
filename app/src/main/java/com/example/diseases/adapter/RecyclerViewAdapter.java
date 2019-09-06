@@ -39,7 +39,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Disease disease = diseaseList.get(position);
+
         holder.deseaseName.setText(disease.getName());
+        holder.diseaseDescription.setText(disease.getDescriptiom());
+
     }
 
 
@@ -50,10 +53,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView deseaseName;
+        public TextView diseaseDescription;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             deseaseName = itemView.findViewById(R.id.disease_name_for_row);
+            diseaseDescription = itemView.findViewById(R.id.disease_description_for_row2);
         }
 
         @Override
