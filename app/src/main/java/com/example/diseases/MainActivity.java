@@ -32,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
         diseasesArrayList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
 
+
+
+//        db.addDiseases(new Disease("a", "aaaaaaaaaaaaaaaaaa"));
+//        db.addDiseases(new Disease("b", "aaaaaaaaaaaaaaaaaa"));
+//        db.addDiseases(new Disease("c", "aaaaaaaaaaaaaaaaaa"));
+
+
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -45,15 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(recyclerViewAdapter);
 
-//        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, diseasesArrayList);
-//        listView.setAdapter(arrayAdapter);
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Intent intent = new Intent(MainActivity.this , DiseaseInformation.class);
-//
-//            }
-//        });
     }
 }
